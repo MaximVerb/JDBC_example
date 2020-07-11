@@ -1,9 +1,6 @@
 package oefVaes;
 
-import jdk.jfr.Category;
-
 import java.sql.*;
-import java.util.List;
 import java.util.Scanner;
 
 public class SearchBeer {
