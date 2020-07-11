@@ -19,8 +19,7 @@ public class SearchBeer {
              ResultSet rst = stm.executeQuery(sql))//vult query in en steekt het in een object
 
         {
-            rst.afterLast();
-            while (rst.previous()) {
+            while (rst.next()) {
                 String beername = rst.getString("Name");
                 double alcohol = rst.getDouble("Alcohol");
                 double price = rst.getDouble("Price");
