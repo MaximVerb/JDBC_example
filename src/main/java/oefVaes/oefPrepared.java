@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 public class oefPrepared {
     public static void main(String[] args) {
-        String sql = "Select * from beers where alcohol > 10";
+        String sql = "Select * from beers where alcohol > ?";
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/beersdb?serverTimezone=UTC",
                 "root",getPassword());
             PreparedStatement stm = con.prepareStatement(sql))
 
         {
+            stm.setInt(1,8);
             ResultSet rst = stm.executeQuery();
 
             ResultSetMetaData metaData = rst.getMetaData();
