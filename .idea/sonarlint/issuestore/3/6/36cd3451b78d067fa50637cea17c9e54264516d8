@@ -1,8 +1,4 @@
 
-M
-java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8Í¦‘³.
-O
-java:S1128"-Remove this unused import 'jdk.jfr.Category'.(šû¥Ÿøÿÿÿÿ8Ù¡–œ³.
-U	java:S106+"9Replace this use of System.out or System.err by a logger.(á¡ıì8åáÙ›³.
+U	java:S106'"9Replace this use of System.out or System.err by a logger.(á¡ıì8åáÙ›³.
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(óàğ‘ûÿÿÿÿ
-Z	java:S106 "9Replace this use of System.out or System.err by a logger.(áñÊ‹ùÿÿÿÿ8åáÙ›³.
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(áñÊ‹ùÿÿÿÿ8åáÙ›³.
