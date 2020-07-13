@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BeerDaoImpl implements BeerDao {
     private String url;
@@ -21,10 +22,10 @@ public class BeerDaoImpl implements BeerDao {
             try (ResultSet rst = pstm.executeQuery()) {         //voert de query uit
                 if (rst.next()) {                               //indien waar maak nieuw object bier van bierklasse
                     Beer beer = new Beer();                     //haalt alle info uit de database via de kolomnamen
-                    beer.setId(id);
-                    beer.setName(rst.getString("Name"));
-                    beer.setPrice(rst.getFloat("Price"));
-                    beer.setAlcohol(rst.getFloat("Alcohol"));
+                    beer.setId(id);                             //je kunt eventueel ook kolomindexen gebruiken
+                    beer.setName(rst.getString("Name"));      //vb kolom 1 , kolom 2 enz.
+                    beer.setPrice(rst.getFloat("Price"));       //maar als je database dan verandert gaat je code fout gaan
+                    beer.setAlcohol(rst.getFloat("Alcohol"));   //daarom zijn kolomnamen flexibeler
                     beer.setStock(rst.getInt("Stock"));
                     return beer;
                 }
@@ -40,8 +41,26 @@ public class BeerDaoImpl implements BeerDao {
     }                                                // dan worden ze automatisch achteraf afgesloten via de interface
                                                     //AutoCloseAble() --> moet je niet expliciet con.close() of
                                                     // of rst.close () aanroepen om je database te beschermen
+    public ArrayList<Object> getBrewerByZipcode (String zipcode) {
+        String sql = "select * from Brewers where zipcode = ?";
+        ArrayList<Object> brewerList = new ArrayList<>();
+        try (Connection con = getConnection();
+             PreparedStatement pstm = con.prepareStatement(sql)) {
+            pstm.setString(1, zipcode);
+            try (ResultSet rst = pstm.executeQuery()) {
+                while (rst.next()) {
+                    brewerList.add(rst.getObject(1));            //geeft enkel de ID's mee
+                    brewerList.add(rst.getObject(2));              //geeft de 2de kolomindex mee
+                }
+                return brewerList;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 
-    @Override
+        @Override
     public void updateBeer(Beer beer) throws BeerException{
         try (Connection con = getConnection();
              PreparedStatement pstm = con.prepareStatement("UPDATE Beers SET Name = ?, Price = ?," +
