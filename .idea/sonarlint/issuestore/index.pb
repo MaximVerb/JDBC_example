@@ -13,5 +13,7 @@ V
 &src/main/java/oefVaes/oefPrepared.java,b\1\b1ac1ea595a6fe85c3c684e24a073711fadd9987
 V
 &src/main/java/oefVaes/ChangeStock.java,7\6\76f4c85c4a03d44ae1c4eac1beef4ad3f4406423
-W
-'src/main/java/oefVaes/BankTransfer.java,5\c\5c9e4d81b0e9864e5f695308bcadbef372e9f14f
+[
++src/main/java/oefVaes/BeerTransactions.java,8\8\88f56bcebe1f01077b9bd68344162d4056d95467
+U
+%src/main/java/oefVaes/OefStock50.java,b\b\bb23204ac9b5005602736b7751e437ff184ac09f

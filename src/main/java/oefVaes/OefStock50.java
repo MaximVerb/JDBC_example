@@ -16,7 +16,7 @@ public class OefStock50 {
 
             while(rst.next())
             {
-                rst.updateDouble("Stock", rst.getDouble("Stock")-50);
+                rst.updateDouble("Stock", rst.getDouble("Stock") + 50);
                 rst.updateRow();
             }
             rst.close();
